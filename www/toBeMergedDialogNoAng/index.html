@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="us">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Example Page</title>
+    <link href="jquery-ui.css" rel="stylesheet">
+    <link href="stylejqui.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1>Welcome to jQuery UI!</h1>
+
+    <div class="ui-widget"></div>
+    <h2 class="demoHeaders">Dialog</h2>
+    <p>
+        <button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+		<span class="ui-icon ui-icon-newwin"></span>Open Dialog
+	</button>
+    </p>
+
+    <!-- ui-dialog -->
+    <div id="dialog" title="Dialog Title">
+        <p>fffLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+        $("#dialog").dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: [{
+                    text: "Ok",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                },
+                {
+                    text: "Cancel",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        });
+
+        // Link to open the dialog
+        $("#dialog-link").click(function(event) {
+            $("#dialog").dialog("open");
+            event.preventDefault();
+        });
+
+
+        // Hover states on the static widgets
+        $("#dialog-link, #icons li").hover(
+            function() {
+                $(this).addClass("ui-state-hover");
+            },
+            function() {
+                $(this).removeClass("ui-state-hover");
+            }
+        );
+    </script>
+</body>
+
+</html>

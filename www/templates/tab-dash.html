@@ -1,17 +1,62 @@
 <ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      <b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
-    </p>
-  </ion-content>
+    <ion-content class="padding">
+        <h1>Welcome to jQuery UI!</h1>
+
+        <div class="ui-widget"></div>
+        <h2 class="demoHeaders">Dialog</h2>
+        <p>
+            <button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+		<span class="ui-icon ui-icon-newwin"></span>Open Dialog
+	</button>
+        </p>
+
+        <!-- ui-dialog -->
+        <div id="dialog" title="Dialog Title">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+<!--
+
+        <script src="jquery.js"></script>
+        <script src="jquery-ui.js"></script>
+-->
+        <script>
+            $("#dialog").dialog({
+                autoOpen: false,
+                width: 400,
+                buttons: [{
+                        text: "Ok",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    {
+                        text: "Cancel",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+
+            // Link to open the dialog
+            $("#dialog-link").click(function(event) {
+                $("#dialog").dialog("open");
+                event.preventDefault();
+            });
+
+
+            // Hover states on the static widgets
+            $("#dialog-link, #icons li").hover(
+                function() {
+                    $(this).addClass("ui-state-hover");
+                },
+                function() {
+                    $(this).removeClass("ui-state-hover");
+                }
+            );
+        </script>
+        <p><b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
+        </p>
+    </ion-content>
 </ion-view>
