@@ -48,49 +48,55 @@ angular.module('starter.controllers', [])
 
     // start tests
 
-.directive('dirOne', function(){
-    return{
-        link: function($scope, element){
-            element.on('click', function(){
-                console.log('inside dirOne click');
-                element.dialog({
-                autoOpen: false,
-                width: 400,
-                buttons: [{
-                        text: "Ok",
-                        click: function() {
-                            $(this).dialog("close");
-                        }
+    .directive('dirOne', function () {
+        //    var dialogElement = angular.element( document.querySelector( '#dialog' ) );
+
+        return {
+            link: function ($scope, element) {
+                element.on('click', function () {
+                    console.log('inside dirOne click');
+                    var dialogElement = angular.element(document.querySelector('#dialog'));
+                    console.log("dialogElement: ", dialogElement);
+                    dialogElement.dialog({
+                        autoOpen: true,
+                        width: 400,
+                        buttons: [{
+                                text: "Ok",
+                                click: function () {
+                                    dialogElement.dialog("close");
+                                }
                     },
-                    {
-                        text: "Cancel",
-                        click: function() {
-                            $(this).dialog("close");
-                        }
+                            {
+                                text: "Cancel",
+                                click: function () {
+                                    dialogElement.dialog("close");
+                                }
                     }
                 ]
-            });
-    
-            // Link to open the dialog
-            $("#dialog-link").click(function(event) {
-                $("#dialog").dialog("open");
-                event.preventDefault();
-            });
-    
-    
-            // Hover states on the static widgets
-            $("#dialog-link, #icons li").hover(
-                function() {
-                    $(this).addClass("ui-state-hover");
-                },
-                function() {
-                    $(this).removeClass("ui-state-hover");
-                }
-            );
-            })
+                    });
+
+                    // Link to open the dialog
+                    var dialogLinkElement = angular.element(document.querySelector('#dialog-link'));
+                    dialogLinkElement.click(function (event) {
+                        console.log('dialogLinkEl: ', dialogLinkElement);
+                        dialogElement.dialog("open");
+                        event.preventDefault();
+                    });
+
+                    //    
+                    //            // Hover states on the static widgets
+                    //            $("#dialog-link, #icons li").hover(
+                    //                function() {
+                    //                    $(this).addClass("ui-state-hover");
+                    //                },
+                    //                function() {
+                    //                    $(this).removeClass("ui-state-hover");
+                    //                }
+                    //            );
+                })
+            }
         }
-    }
-})
+    })
     .directive('myDomDirective', function () {
         return {
             link: function ($scope, element, attrs) {
@@ -113,12 +119,12 @@ angular.module('starter.controllers', [])
                 }]
                     });
                 });
-//                element.on('mouseenter', function () {
-//                    element.css('background-color', 'yellow');
-//                });
-//                element.on('mouseleave', function () {
-//                    element.css('background-color', 'orange');
-//                });
+                //                element.on('mouseenter', function () {
+                //                    element.css('background-color', 'yellow');
+                //                });
+                //                element.on('mouseleave', function () {
+                //                    element.css('background-color', 'orange');
+                //                });
             }
         };
     })
