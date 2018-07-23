@@ -3,6 +3,32 @@ angular.module('starter.controllers', [])
     .controller('DashCtrl', function ($scope) {
         $scope.newVar = "hey";
         console.log("newVar: " + $scope.newVar);
+        var dialogElement = angular.element(document.querySelector('#dialog'));
+        console.log("dialogElement: ", dialogElement);
+        dialogElement.dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: [{
+                    text: "Ok",
+                    click: function () {
+                        dialogElement.dialog("close");
+                    }
+                    },
+                {
+                    text: "Cancel",
+                    click: function () {
+                        dialogElement.dialog("close");
+                    }
+                    }
+                ]
+        });
+
+        var dialogLinkElement = angular.element(document.querySelector('#dialog-link'));
+        dialogLinkElement.click(function (event) {
+            console.log('dialogLinkEl: ', dialogLinkElement);
+            dialogElement.dialog("open");
+            event.preventDefault();
+        });
 
     })
     .directive('dirOne', function () {
@@ -10,33 +36,33 @@ angular.module('starter.controllers', [])
             link: function ($scope, element) {
                 element.on('click', function () {
                     console.log('inside dirOne click');
-                    var dialogElement = angular.element(document.querySelector('#dialog'));
-                    console.log("dialogElement: ", dialogElement);
-                    dialogElement.dialog({
-                        autoOpen: false,
-                        width: 400,
-                        buttons: [{
-                                text: "Ok",
-                                click: function () {
-                                    dialogElement.dialog("close");
-                                }
-                    },
-                            {
-                                text: "Cancel",
-                                click: function () {
-                                    dialogElement.dialog("close");
-                                }
-                    }
-                ]
-                    });
+                    //                    var dialogElement = angular.element(document.querySelector('#dialog'));
+                    //                    console.log("dialogElement: ", dialogElement);
+                    //                    dialogElement.dialog({
+                    //                        autoOpen: false,
+                    //                        width: 400,
+                    //                        buttons: [{
+                    //                                text: "Ok",
+                    //                                click: function () {
+                    //                                    dialogElement.dialog("close");
+                    //                                }
+                    //                    },
+                    //                            {
+                    //                                text: "Cancel",
+                    //                                click: function () {
+                    //                                    dialogElement.dialog("close");
+                    //                                }
+                    //                    }
+                    //                ]
+                    //                    });
 
                     // Link to open the dialog
-                    var dialogLinkElement = angular.element(document.querySelector('#dialog-link'));
-                    dialogLinkElement.click(function (event) {
-                        console.log('dialogLinkEl: ', dialogLinkElement);
-                        dialogElement.dialog("open");
-                        event.preventDefault();
-                    });
+                    //                    var dialogLinkElement = angular.element(document.querySelector('#dialog-link'));
+                    //                    dialogLinkElement.click(function (event) {
+                    //                        console.log('dialogLinkEl: ', dialogLinkElement);
+                    //                        dialogElement.dialog("open");
+                    //                        event.preventDefault();
+                    //                    });
                 })
             }
         }
