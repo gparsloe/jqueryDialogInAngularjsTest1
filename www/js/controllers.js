@@ -5,52 +5,7 @@ angular.module('starter.controllers', [])
         console.log("newVar: " + $scope.newVar);
 
     })
-    //Start test
-    //    <script type="text/javascript">
-    //        $("#dialog").dialog({
-    //            autoOpen: false,
-    //            width: 400,
-    //            buttons: [{
-    //                    text: "Ok",
-    //                    click: function() {
-    //                        $(this).dialog("close");
-    //                    }
-    //                },
-    //                {
-    //                    text: "Cancel",
-    //                    click: function() {
-    //                        $(this).dialog("close");
-    //                    }
-    //                }
-    //            ]
-    //        });
-    //
-    //        // Link to open the dialog
-    //        $("#dialog-link").click(function(event) {
-    //            $("#dialog").dialog("open");
-    //            event.preventDefault();
-    //        });
-    //
-    //
-    //        // Hover states on the static widgets
-    //        $("#dialog-link, #icons li").hover(
-    //            function() {
-    //                $(this).addClass("ui-state-hover");
-    //            },
-    //            function() {
-    //                $(this).removeClass("ui-state-hover");
-    //            }
-    //        );
-    //    </script>
-
-
-
-
-    // start tests
-
     .directive('dirOne', function () {
-        //    var dialogElement = angular.element( document.querySelector( '#dialog' ) );
-
         return {
             link: function ($scope, element) {
                 element.on('click', function () {
@@ -58,7 +13,7 @@ angular.module('starter.controllers', [])
                     var dialogElement = angular.element(document.querySelector('#dialog'));
                     console.log("dialogElement: ", dialogElement);
                     dialogElement.dialog({
-                        autoOpen: true,
+                        autoOpen: false,
                         width: 400,
                         buttons: [{
                                 text: "Ok",
@@ -82,51 +37,9 @@ angular.module('starter.controllers', [])
                         dialogElement.dialog("open");
                         event.preventDefault();
                     });
-
-                    //    
-                    //            // Hover states on the static widgets
-                    //            $("#dialog-link, #icons li").hover(
-                    //                function() {
-                    //                    $(this).addClass("ui-state-hover");
-                    //                },
-                    //                function() {
-                    //                    $(this).removeClass("ui-state-hover");
-                    //                }
-                    //            );
                 })
             }
         }
-    })
-    .directive('myDomDirective', function () {
-        return {
-            link: function ($scope, element, attrs) {
-                element.on('click', function () {
-                    element.html('You clicked me!!');
-                    element.dialog({
-                        autoOpen: false,
-                        width: 400,
-                        buttons: [{
-                                text: "Ok",
-                                click: function () {
-                                    $(this).dialog("close");
-                                }
-                },
-                            {
-                                text: "Cancel",
-                                click: function () {
-                                    $(this).dialog("close");
-                                }
-                }]
-                    });
-                });
-                //                element.on('mouseenter', function () {
-                //                    element.css('background-color', 'yellow');
-                //                });
-                //                element.on('mouseleave', function () {
-                //                    element.css('background-color', 'orange');
-                //                });
-            }
-        };
     })
     .controller('ChatsCtrl', function ($scope, Chats) {
         // With the new view caching in Ionic, Controllers are only called
