@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+:focus {
+    outline-color:red;
+outline-width:5px;
+    outline-style: dotted;
+}
